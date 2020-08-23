@@ -4,6 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { LoggerModule } from 'nestjs-pino';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { UserModule } from './user/user.module';
+
 @Global()
 @Module({
   imports: [
@@ -39,6 +41,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         database: configService.get<string>('PG_DATABASE'),
       }),
     }),
+    UserModule,
   ],
   providers: [
     {
