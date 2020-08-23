@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 services:
   nestjs_starter:
@@ -9,3 +9,17 @@ services:
       - 3000:3000
     env_file:
       - .env.example
+    depends_on:
+      - nestjs_starter_mongodb
+
+  nestjs_starter_mongodb:
+    image: mongo
+    restart: always
+    container_name: nestjs_starter_mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_vol:/data/db
+
+volumes:
+  mongo_vol:

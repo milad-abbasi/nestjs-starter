@@ -37,7 +37,8 @@ $ npm install
 ## Required modules
 
 ```bash
-$ npm install @nestjs/config nestjs-pino pino-pretty class-validator class-transformer
+$ npm install @nestjs/config nestjs-pino pino-pretty class-validator class-transformer @nestjs/mongoose mongoose
+$ npm install --save-dev @types/mongoose
 ```
 
 ## Running the app

@@ -2,6 +2,7 @@ import { Global, Module, ValidationPipe } from '@nestjs/common';
 import { APP_PIPE } from '@nestjs/core';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { LoggerModule } from 'nestjs-pino';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Global()
 @Module({
@@ -20,6 +21,14 @@ import { LoggerModule } from 'nestjs-pino';
           prettyPrint:
             configService.get<string>('LOG_PRETTY', 'true') === 'true',
         },
+      }),
+    }),
+    MongooseModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        useCreateIndex: true,
+        useFindAndModify: false,
+        uri: configService.get<string>('MONGODB_URI'),
       }),
     }),
   ],
