@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "local",
+      "type": "node",
+      "request": "attach",
+      "protocol": "inspector",
+      "port": 9229,
+      "sourceMaps": true,
+      "smartStep": true,
+      "restart": true,
+      "stopOnEntry": false,
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**/*.js"
+      ]
+    },
+    {
+      "name": "remote",
+      "type": "node",
+      "request": "attach",
+      "protocol": "inspector",
+      "address": "localhost",
+      "port": 9229,
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "/path/to/remote/project",
+      "sourceMaps": true,
+      "smartStep": true,
+      "restart": true,
+      "stopOnEntry": false,
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**/*.js"
+      ]
+    }
+  ]
+}

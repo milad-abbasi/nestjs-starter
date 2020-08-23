@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  nestjs_starter:
+    restart: always
+    container_name: nestjs_starter
+    build: .
+    ports:
+      - 3000:3000
+    env_file:
+      - .env.example
