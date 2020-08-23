@@ -4,6 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { LoggerModule } from 'nestjs-pino';
 import { MongooseModule } from '@nestjs/mongoose';
 
+import { UserModule } from './user/user.module';
+
 @Global()
 @Module({
   imports: [
@@ -31,6 +33,7 @@ import { MongooseModule } from '@nestjs/mongoose';
         uri: configService.get<string>('MONGODB_URI'),
       }),
     }),
+    UserModule,
   ],
   providers: [
     {
