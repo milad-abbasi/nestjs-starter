@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 services:
   nestjs_starter:
@@ -9,3 +9,21 @@ services:
       - 3000:3000
     env_file:
       - .env.example
+    depends_on:
+      - nestjs_starter_postgres
+
+  nestjs_starter_postgres:
+    image: postgres
+    restart: always
+    container_name: nestjs_starter_postgres
+    environment:
+      POSTGRES_DB: nestjs_starter
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+    ports:
+      - 5432:5432
+    volumes:
+      - pg_vol:/var/lib/postgresql/data
+
+volumes:
+  pg_vol:
